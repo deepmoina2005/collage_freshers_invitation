@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freshers’ Invitation 2025</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    * { font-family: 'Poppins', sans-serif; }
+    #invitation-card {
+      display: none;
+      animation: fadeInScale 0.9s ease forwards;
+    }
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.8) translateY(40px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-r from-purple-900 via-purple-800 to-indigo-900 flex flex-col items-center justify-center min-h-screen p-6">
+
+  <!-- Main Section -->
+  <div id="main-section"
+    class="max-w-4xl py-16 px-10 mx-2 md:mx-auto flex flex-col items-center text-center 
+              bg-gradient-to-b from-[#4C0083] to-[#180047] rounded-2xl text-white shadow-2xl">
+    
+    <!-- Heading -->
+    <h1 class="text-4xl md:text-5xl font-extrabold mt-4 bg-gradient-to-r from-white to-purple-300 
+               text-transparent bg-clip-text drop-shadow-md">
+      🎉 Welcome Freshers! 🎉
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="bg-gradient-to-r from-white to-purple-200 text-transparent bg-clip-text text-lg mt-4 max-w-xl">
+      Get ready for an unforgettable morning of fun, laughter, and memories.  
+      Your freshers’ journey begins here!
+    </p>
+
+    <!-- Button -->
+    <button id="startBtn"
+      class="px-12 py-3 mt-8 text-white border border-purple-400 
+             bg-purple-600/80 hover:bg-purple-700 transition-all 
+             rounded-full text-lg font-semibold shadow-lg hover:shadow-purple-500/50">
+      💌 View Invitation
+    </button>
+  </div>
+
+  <!-- Invitation Card (Hidden initially) -->
+  <div id="invitation-card"
+    class="max-w-lg w-full mx-auto mt-10 bg-white shadow-2xl rounded-2xl p-10 text-center relative overflow-hidden border-4 border-transparent bg-clip-padding"
+    style="background-image: linear-gradient(white, white), linear-gradient(135deg, #a855f7, #6366f1); background-origin: border-box; background-clip: padding-box, border-box;">
+    
+    <h2 class="text-4xl font-extrabold text-purple-700 drop-shadow-sm">🌟 Freshers’ Party 2025 🌟</h2>
+    <p class="mt-4 text-gray-700 text-lg">We are thrilled to welcome our new batch of students!</p>
+    
+    <p class="mt-4 text-gray-600 text-md">📅 <span class="font-semibold">30th August 2025</span></p>
+    <p class="text-gray-600 text-md">⏰ <span class="font-semibold">10:00 AM</span></p>
+    <p class="text-gray-600 text-md">📍 <span class="font-semibold">Sibsagar Commerce College, College Auditorium</span></p>
+    
+    <p class="mt-6 text-purple-600 font-semibold text-lg">
+      ✨ Join us for music, dance, games & endless memories! ✨
+    </p>
+
+    <button id="closeBtn"
+      class="mt-8 px-6 py-2 rounded-full bg-purple-600 text-white font-medium 
+             hover:bg-purple-700 transition shadow">
+      ❌ Close
+    </button>
+  </div>
+
+  <script>
+    const btn = document.getElementById("startBtn");
+    const card = document.getElementById("invitation-card");
+    const mainSection = document.getElementById("main-section");
+    const closeBtn = document.getElementById("closeBtn");
+
+    btn.addEventListener("click", () => {
+      // Hide main section
+      mainSection.style.display = "none";
+
+      // Confetti Blast
+      confetti({
+        particleCount: 250,
+        spread: 120,
+        origin: { y: 0.6 }
+      });
+
+      // Show Invitation
+      setTimeout(() => {
+        card.style.display = "block";
+      }, 400);
+    });
+
+    closeBtn.addEventListener("click", () => {
+      // Hide invitation card
+      card.style.display = "none";
+      // Show main section again
+      mainSection.style.display = "flex";
+    });
+  </script>
+
+</body>
+</html>
